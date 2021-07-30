@@ -1,0 +1,44 @@
+ores:
+  #TODO ores??
+  experience ore:
+    # In which worlds will this ore appear in the wilderness?
+    enabled worlds:
+      - world
+    # URL: https://minecraft-heads.com/custom-heads/decoration/24904-experience-orbs
+    url: 87d885b32b0dd2d6b7f1b582a34186f8a5373c46589a273423132b448b803462
+    # How many chunks in 1000 chunks should contain this ore.
+    chunk probability: 1.0
+    # Percentage, out of 1000 for a block to be replaced by this ore.
+    probablity: 0.5
+    # Lowest Y level in which this ore will spawn.
+    min y: 30
+    # Highest Y level in which this ore will spawn.
+    max y: 30
+    # The max amount of ores of this type that will be able to spawn in a chunk.
+    max amount: 5
+    # A list of block types this ore will replace.
+    replaces:
+      - 'STONE'
+    # The amount of experience to give when this ore is broken.
+    experience: 20
+  health ore:
+    # In which worlds will this ore appear in the wilderness?
+    enabled worlds:
+      - world
+    # URL: https://minecraft-heads.com/custom-heads/miscellaneous/3945-hearts
+    url: 2c8fb637d6e1a7ba8fa97ee9d2915e843e8ec790d8b7bf6048be621ee4d59fba
+    # How many chunks in 1000 chunks should contain this ore.
+    chunk probability: 1.0
+    # Percentage, out of 1000 for a block to be replaced by this ore.
+    probablity: 0.5
+    # Lowest Y level in which this ore will spawn.
+    min y: 60
+    # Highest Y level in which this ore will spawn.
+    max y: 30
+    # The max amount of ores of this type that will be able to spawn in a chunk.
+    max amount: 5
+    # A list of block types this ore will replace.
+    replaces:
+      - 'STONE'
+    # The amount of HP this ore gives when mined. 2HP = 1 heart.
+    health: 10

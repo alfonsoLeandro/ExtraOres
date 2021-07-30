@@ -1,0 +1,28 @@
+name: ${project.name}
+version: ${project.version}
+main: com.github.alfonsoleandro.extraores.ExtraOres
+api-version: "1.13"
+authors: [lelesape]
+description: ${project.description}
+website: http://bit.ly/2mwvHWN
+depend: [MPUtils]
+
+commands:
+  extraOres:
+    description: Main command
+    aliases: [eo, extrao]
+    usage: Command was not registered properly
+
+permissions:
+  extraOres.version:
+    description: Allows you to check the plugins version
+    default: op
+  extraOres.reload:
+    description: Allows you to reload the plugin
+    default: op
+  extraOres.*:
+    description: Gives access to every permission available
+    default: op
+    children:
+      extraOres.version: true
+      extraOres.reload: true

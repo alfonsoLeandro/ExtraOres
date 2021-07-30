@@ -1,0 +1,4 @@
+messages:
+  no permission: '&cNo permission'
+  unknown command: '&cUnknown command. &fTry /%command% help'
+  reloaded: '&aFiles reloaded!'

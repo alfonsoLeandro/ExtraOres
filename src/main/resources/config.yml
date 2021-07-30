@@ -1,0 +1,4 @@
+config:
+  prefix: '&f[&eMPExtraOres&f]'
+  debug: true
+  max ores per chunk: 20
