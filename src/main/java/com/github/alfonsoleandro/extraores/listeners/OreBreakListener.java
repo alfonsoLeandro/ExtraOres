@@ -2,9 +2,11 @@ package com.github.alfonsoleandro.extraores.listeners;
 
 import com.github.alfonsoleandro.extraores.ExtraOres;
 import com.github.alfonsoleandro.extraores.events.OreBreakEvent;
-import com.github.alfonsoleandro.extraores.managers.OresManager;
-import com.github.alfonsoleandro.extraores.utils.MessageSender;
+import com.github.alfonsoleandro.extraores.managers.MessageSender;
+import com.github.alfonsoleandro.extraores.ores.ExtraOre;
 import org.bukkit.Bukkit;
+import org.bukkit.block.Block;
+import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
@@ -18,15 +20,20 @@ public class OreBreakListener implements Listener {
     }
 
 
-    @EventHandler(priority = EventPriority.HIGH)
+    @EventHandler(priority = EventPriority.MONITOR)
     public void onOreBreak(OreBreakEvent event){
-        messageSender.debug("Ore break even triggered, ore: "+event.getOre().getOreName());
+        Player player = event.getPlayer();
+        Block block = event.getBlock();
+        ExtraOre ore = event.getOre();
+        messageSender.debug("Ore break even triggered, ore: "+ore.getOreName());
         Bukkit.broadcastMessage("Ore broken: "+event.getOre().getOreName());
         if(event.isCancelled()){
             Bukkit.broadcastMessage("Ore break cancelled.");
             return;
         }
-        event.getOre().onBreak(event.getPlayer(), event.getBlock().getLocation());
+        if(!event.isSilkTouch()){
+            ore.onBreak(player, block.getLocation());
+        }
     }
 
 

@@ -1,6 +1,7 @@
 package com.github.alfonsoleandro.extraores.events;
 
 import com.github.alfonsoleandro.extraores.ores.ExtraOre;
+import org.bukkit.Location;
 import org.bukkit.block.Block;
 import org.bukkit.entity.Player;
 import org.bukkit.event.Cancellable;
@@ -24,15 +25,21 @@ public class OreBreakEvent extends Event implements Cancellable {
      * The cancellation state of this event.
      */
     protected boolean isCancelled;
+    /**
+     * Whether the player mined the ore using an item enchanted with {@link org.bukkit.enchantments.Enchantment#SILK_TOUCH}.
+     */
+    protected final boolean isSilkTouch;
 
     /**
      * Called when a custom ore registered in this plugin's custom ores' manager is broken.
      * @param blockBreakEvent The event that triggered this OreBreakEvent.
      * @param ore The ExtraOre being broke.
+     * @param isSilkTouch Whether the player mined the ore using an item enchanted with {@link org.bukkit.enchantments.Enchantment#SILK_TOUCH}.
      */
-    public OreBreakEvent(BlockBreakEvent blockBreakEvent, ExtraOre ore) {
+    public OreBreakEvent(BlockBreakEvent blockBreakEvent, ExtraOre ore, boolean isSilkTouch) {
         this.blockBreakEvent = blockBreakEvent;
         this.ore = ore;
+        this.isSilkTouch = isSilkTouch;
     }
 
     /**
@@ -59,7 +66,7 @@ public class OreBreakEvent extends Event implements Cancellable {
      *
      * @return The Block which block is involved in this event
      */
-    public final Block getBlock() {
+    public Block getBlock() {
         return blockBreakEvent.getBlock();
     }
 
@@ -71,7 +78,16 @@ public class OreBreakEvent extends Event implements Cancellable {
      * @return true if this event is cancelled
      */
     public boolean isCancelled(){
-        return this.isCancelled;
+        return this.isCancelled || this.blockBreakEvent.isCancelled();
+    }
+
+    /**
+     * Checks to see if the player used Silk touch to mine this ore. If true, {@link ExtraOre#onBreak(Player, Location)}
+     * will not be called, instead, the ore item will be dropped.
+     * @return Whether the player mined the ore using an item enchanted with {@link org.bukkit.enchantments.Enchantment#SILK_TOUCH}.
+     */
+    public boolean isSilkTouch(){
+        return this.isSilkTouch;
     }
 
     /**
