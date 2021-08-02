@@ -23,7 +23,8 @@ public class CompactDiamondOre extends ExtraOre {
 
     @Override
     public void onBreak(Player player, Location location) {
-        Objects.requireNonNull(location.getWorld()).dropItemNaturally(location, new ItemStack(Material.DIAMOND, amount));
+        Objects.requireNonNull(location.getWorld()).dropItemNaturally(location,
+                new ItemStack(Material.DIAMOND, amount));
     }
 
 }

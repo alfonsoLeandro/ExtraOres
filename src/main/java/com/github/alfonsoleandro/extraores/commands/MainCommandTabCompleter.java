@@ -1,5 +1,8 @@
 package com.github.alfonsoleandro.extraores.commands;
 
+import com.github.alfonsoleandro.extraores.ExtraOres;
+import com.github.alfonsoleandro.extraores.managers.OresManager;
+import com.github.alfonsoleandro.extraores.ores.ExtraOre;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.command.TabCompleter;
@@ -8,6 +11,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class MainCommandTabCompleter implements TabCompleter {
+
+    private final OresManager oresManager;
+
+    public MainCommandTabCompleter(ExtraOres plugin){
+        this.oresManager = plugin.getOresManager();
+    }
+
 
     /**
      * Checks if a string is equal (ignoring upper cases) to another string completed or uncompleted.
@@ -30,6 +40,7 @@ public class MainCommandTabCompleter implements TabCompleter {
                 completions.add("help");
                 completions.add("version");
                 completions.add("reload");
+                completions.add("give");
 
             } else if(equalsToStrings(args[0], "help")) {
                 completions.add("help");
@@ -39,8 +50,19 @@ public class MainCommandTabCompleter implements TabCompleter {
 
             } else if(equalsToStrings(args[0], "reload")) {
                 completions.add("reload");
+
+            }else if(equalsToStrings(args[0], "give")) {
+                completions.add("give");
             }
 
+        }else if(args.length == 2){
+            if(args[0].equalsIgnoreCase("give")){
+                for(ExtraOre ore : oresManager.getRegisteredOres()){
+                    if(equalsToStrings(args[1], ore.getOreName())){
+                        completions.add(ore.getOreName());
+                    }
+                }
+            }
         }
         return completions;
     }

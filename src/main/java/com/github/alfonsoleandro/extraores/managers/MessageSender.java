@@ -146,6 +146,13 @@ public class MessageSender extends Reloadable {
         NO_PERMISSION,
         UNKNOWN_COMMAND,
         RELOADED,
+        CANNOT_SEND_CONSOLE,
+        ORE_NOT_FOUND,
+        INVALID_NUMBER,
+        INVALID_PLAYER,
+        ORE_RECEIVED,
+        ORE_GIVEN,
+        FULL_INV,
         ORE_PLACED
 
     }
