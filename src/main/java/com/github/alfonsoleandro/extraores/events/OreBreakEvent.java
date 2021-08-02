@@ -2,14 +2,13 @@ package com.github.alfonsoleandro.extraores.events;
 
 import com.github.alfonsoleandro.extraores.ores.ExtraOre;
 import org.bukkit.Location;
-import org.bukkit.block.Block;
 import org.bukkit.entity.Player;
 import org.bukkit.event.Cancellable;
-import org.bukkit.event.Event;
 import org.bukkit.event.HandlerList;
 import org.bukkit.event.block.BlockBreakEvent;
+import org.bukkit.event.block.BlockEvent;
 
-public class OreBreakEvent extends Event implements Cancellable {
+public class OreBreakEvent extends BlockEvent implements Cancellable {
 
     private static final HandlerList handlers = new HandlerList();
 
@@ -37,6 +36,7 @@ public class OreBreakEvent extends Event implements Cancellable {
      * @param isSilkTouch Whether the player mined the ore using an item enchanted with {@link org.bukkit.enchantments.Enchantment#SILK_TOUCH}.
      */
     public OreBreakEvent(BlockBreakEvent blockBreakEvent, ExtraOre ore, boolean isSilkTouch) {
+        super(blockBreakEvent.getBlock());
         this.blockBreakEvent = blockBreakEvent;
         this.ore = ore;
         this.isSilkTouch = isSilkTouch;
@@ -58,16 +58,6 @@ public class OreBreakEvent extends Event implements Cancellable {
      */
     public Player getPlayer() {
         return blockBreakEvent.getPlayer();
-    }
-
-
-    /**
-     * Gets the block involved in this event.
-     *
-     * @return The Block which block is involved in this event
-     */
-    public Block getBlock() {
-        return blockBreakEvent.getBlock();
     }
 
 

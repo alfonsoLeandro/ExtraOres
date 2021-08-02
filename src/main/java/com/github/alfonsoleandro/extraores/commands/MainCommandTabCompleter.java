@@ -3,12 +3,16 @@ package com.github.alfonsoleandro.extraores.commands;
 import com.github.alfonsoleandro.extraores.ExtraOres;
 import com.github.alfonsoleandro.extraores.managers.OresManager;
 import com.github.alfonsoleandro.extraores.ores.ExtraOre;
+import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.command.TabCompleter;
+import org.bukkit.entity.HumanEntity;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class MainCommandTabCompleter implements TabCompleter {
 
@@ -63,6 +67,22 @@ public class MainCommandTabCompleter implements TabCompleter {
                     }
                 }
             }
+
+        }else if(args.length == 3){
+            if(args[0].equalsIgnoreCase("give")){
+                for(String name : Bukkit.getOnlinePlayers().stream().map(HumanEntity::getName).collect(Collectors.toList())){
+                    if(equalsToStrings(args[2], name)){
+                        completions.add(name);
+                    }
+                }
+            }
+
+        }else if(args.length == 4){
+            if(args[0].equalsIgnoreCase("give")){
+                Collections.addAll(completions,
+                        "1", "2", "3", "4", "5", "10", "16", "32", "64");
+            }
+
         }
         return completions;
     }

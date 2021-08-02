@@ -9,4 +9,4 @@ messages:
   ore received: '&fReceived %amount% &a%ore%&f!'
   ore given: '&fGiven %amount% &a%ore% &fto %player%!'
   full inv: '&cYour inventory is full, some items may be dropped to the ground'
-  ore placed: '&fOre "&c%ore_name%&f" placed!'
+  ore placed: '&fOre "&c%ore_name%&f" pl ced!'
