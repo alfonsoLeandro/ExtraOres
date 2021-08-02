@@ -10,7 +10,7 @@ ores:
     # How many chunks in 1000 chunks should contain this ore.
     chunk probability: 1.0
     # Percentage, out of 1000 for a block to be replaced by this ore.
-    probablity: 1.0
+    probability: 1.0
     # Lowest Y level in which this ore will spawn.
     min y: 30
     # Highest Y level in which this ore will spawn.
@@ -37,7 +37,7 @@ ores:
     # How many chunks in 1000 chunks should contain this ore.
     chunk probability: 1.0
     # Percentage, out of 1000 for a block to be replaced by this ore.
-    probablity: 1.0
+    probability: 1.0
     # Lowest Y level in which this ore will spawn.
     min y: 60
     # Highest Y level in which this ore will spawn.
@@ -64,7 +64,7 @@ ores:
     # How many chunks in 1000 chunks should contain this ore.
     chunk probability: 1.0
     # Percentage, out of 1000 for a block to be replaced by this ore.
-    probablity: 1.0
+    probability: 1.0
     # Lowest Y level in which this ore will spawn.
     min y: 2
     # Highest Y level in which this ore will spawn.
@@ -92,7 +92,7 @@ ores:
     # How many chunks in 1000 chunks should contain this ore.
     chunk probability: 1.0
     # Percentage, out of 1000 for a block to be replaced by this ore.
-    probablity: 1.0
+    probability: 1.0
     # Lowest Y level in which this ore will spawn.
     min y: 2
     # Highest Y level in which this ore will spawn.
