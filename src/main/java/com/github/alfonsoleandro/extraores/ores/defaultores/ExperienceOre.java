@@ -6,6 +6,7 @@ import org.bukkit.Location;
 import org.bukkit.entity.EntityType;
 import org.bukkit.entity.ExperienceOrb;
 import org.bukkit.entity.Player;
+import org.bukkit.inventory.ItemStack;
 
 import java.util.Collection;
 
@@ -15,8 +16,9 @@ public class ExperienceOre extends ExtraOre {
 
     public ExperienceOre(String skinURL, Collection<String> enabledInWorlds,
                          Collection<String> replaces, int maxOresPerChunk, double chunkProbability,
-                         double probability, int minY, int maxY, int experience) {
-        super("experience_ore", skinURL, enabledInWorlds, replaces, maxOresPerChunk, chunkProbability, probability, minY, maxY);
+                         double probability, int minY, int maxY, int experience, ItemStack item) {
+        super("experience_ore", skinURL, enabledInWorlds, replaces, maxOresPerChunk, chunkProbability,
+                probability, minY, maxY, item);
         this.experience = experience;
     }
 

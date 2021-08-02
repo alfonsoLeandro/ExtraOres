@@ -5,14 +5,12 @@ import com.github.alfonsoleandro.extraores.managers.OresManager;
 import com.github.alfonsoleandro.extraores.utils.Settings;
 import com.mojang.authlib.GameProfile;
 import com.mojang.authlib.properties.Property;
-import org.bukkit.Bukkit;
-import org.bukkit.Chunk;
-import org.bukkit.Material;
-import org.bukkit.World;
+import org.bukkit.*;
 import org.bukkit.block.Block;
 import org.bukkit.block.Skull;
 import org.bukkit.generator.BlockPopulator;
-import org.bukkit.metadata.FixedMetadataValue;
+import org.bukkit.persistence.PersistentDataContainer;
+import org.bukkit.persistence.PersistentDataType;
 
 import java.lang.reflect.Field;
 import java.util.Base64;
@@ -76,8 +74,7 @@ public class OrePopulator extends BlockPopulator {
 
 
                         //Finally, Place ore
-                        setSkullSkin(block, ore);
-                        block.setMetadata("ExtraOre", new FixedMetadataValue(plugin, ore));
+                        setSkullSkinAndData(block, ore);
                         placed++;
                         totalPlaced++;
                         Bukkit.broadcastMessage("Ore placed: "+ore.getOreName()+
@@ -91,12 +88,16 @@ public class OrePopulator extends BlockPopulator {
         }
     }
 
-    private void setSkullSkin(Block block, ExtraOre ore){
+    private void setSkullSkinAndData(Block block, ExtraOre ore){
         String skullUrl = "http://textures.minecraft.net/texture/"+ ore.getSkinURL();
         block.setType(Material.PLAYER_WALL_HEAD);
         Skull skull = (Skull) block.getState();
 
-        GameProfile profile = new GameProfile(UUID.fromString("8561b610-ad5c-390d-ac31-1a1d8ca69fd7"), null);
+        PersistentDataContainer data = skull.getPersistentDataContainer();
+        data.set(new NamespacedKey(plugin, "ExtraOre"), PersistentDataType.STRING,
+                ore.getOreName());
+
+        GameProfile profile = new GameProfile(UUID.fromString("ee9a50bc-4a58-432e-b1a1-52c8fb41f5fb"), null);
         byte[] encodedData = Base64.getEncoder().encode(String.format("{textures:{SKIN:{url:\"%s\"}}}", skullUrl).getBytes());
         profile.getProperties().put("textures", new Property("textures", new String(encodedData)));
         Field profileField;

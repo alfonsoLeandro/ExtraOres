@@ -3,10 +3,11 @@ package com.github.alfonsoleandro.extraores;
 import com.github.alfonsoleandro.extraores.commands.MainCommand;
 import com.github.alfonsoleandro.extraores.commands.MainCommandTabCompleter;
 import com.github.alfonsoleandro.extraores.listeners.BlockBreakListener;
+import com.github.alfonsoleandro.extraores.listeners.BlockPlaceListener;
 import com.github.alfonsoleandro.extraores.listeners.OreBreakListener;
 import com.github.alfonsoleandro.extraores.ores.OrePopulator;
 import com.github.alfonsoleandro.extraores.managers.OresManager;
-import com.github.alfonsoleandro.extraores.utils.MessageSender;
+import com.github.alfonsoleandro.extraores.managers.MessageSender;
 import com.github.alfonsoleandro.extraores.utils.Settings;
 import com.github.alfonsoleandro.mputils.files.YamlFile;
 import com.github.alfonsoleandro.mputils.reloadable.ReloaderPlugin;
@@ -101,8 +102,9 @@ public final class ExtraOres extends ReloaderPlugin {
      */
     private void registerEvents() {
         PluginManager pm = getServer().getPluginManager();
-        pm.registerEvents(new BlockBreakListener(), this);
+        pm.registerEvents(new BlockBreakListener(this), this);
         pm.registerEvents(new OreBreakListener(this), this);
+        pm.registerEvents(new BlockPlaceListener(this), this);
 //        pm.registerEvents(new PopulateOresListeners(this), this);
     }
 
@@ -121,7 +123,7 @@ public final class ExtraOres extends ReloaderPlugin {
         }
 
         mainCommand.setExecutor(new MainCommand(this));
-        mainCommand.setTabCompleter(new MainCommandTabCompleter());
+        mainCommand.setTabCompleter(new MainCommandTabCompleter(this));
     }
 
 

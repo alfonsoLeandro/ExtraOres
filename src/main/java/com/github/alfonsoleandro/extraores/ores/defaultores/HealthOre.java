@@ -6,6 +6,7 @@ import org.bukkit.Location;
 import org.bukkit.Particle;
 import org.bukkit.attribute.Attribute;
 import org.bukkit.entity.Player;
+import org.bukkit.inventory.ItemStack;
 
 import java.util.Collection;
 import java.util.Objects;
@@ -16,8 +17,9 @@ public class HealthOre extends ExtraOre {
 
     public HealthOre(String skinURL, Collection<String> enabledInWorlds,
                      Collection<String> replaces, int maxOresPerChunk, double chunkProbability,
-                     double probability, int minY, int maxY, double health) {
-        super("heart_ore", skinURL, enabledInWorlds, replaces, maxOresPerChunk, chunkProbability, probability, minY, maxY);
+                     double probability, int minY, int maxY, double health, ItemStack item) {
+        super("heart_ore", skinURL, enabledInWorlds, replaces, maxOresPerChunk, chunkProbability,
+                probability, minY, maxY, item);
         this.health = health;
     }
 
