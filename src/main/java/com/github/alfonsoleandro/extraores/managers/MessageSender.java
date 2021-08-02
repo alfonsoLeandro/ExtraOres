@@ -1,4 +1,4 @@
-package com.github.alfonsoleandro.extraores.utils;
+package com.github.alfonsoleandro.extraores.managers;
 
 import com.github.alfonsoleandro.extraores.ExtraOres;
 import com.github.alfonsoleandro.mputils.reloadable.Reloadable;
@@ -145,7 +145,8 @@ public class MessageSender extends Reloadable {
     public enum Message{
         NO_PERMISSION,
         UNKNOWN_COMMAND,
-        RELOADED
+        RELOADED,
+        ORE_PLACED
 
     }
 }
