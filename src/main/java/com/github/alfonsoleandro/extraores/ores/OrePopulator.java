@@ -50,8 +50,8 @@ public class OrePopulator extends BlockPopulator {
             if(totalPlaced >= max) return;
 
             //If probability failed
-            double prob = random.nextDouble()*1000;
-            if(ore.getChunkProbability() < prob) continue;
+            double prob = random.nextInt(100);
+            if(prob > ore.getChunkProbability()) continue;
             int placed = 0;
 
             //For every block in the chunk, between the ore's Y values.
@@ -69,8 +69,8 @@ public class OrePopulator extends BlockPopulator {
                         //If this block type is not to be replaced by this ore.
                         if(!ore.getReplaces().contains(block.getType().toString())) continue;
                         //If probability failed.
-                        double prob2 = random.nextDouble()*1000;
-                        if(ore.getProbability() < prob2) continue;
+                        double prob2 = random.nextInt(100);
+                        if(prob2 > ore.getProbability()) continue;
 
 
                         //Finally, Place ore

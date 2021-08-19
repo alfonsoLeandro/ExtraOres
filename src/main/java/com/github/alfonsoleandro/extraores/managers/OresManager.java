@@ -2,10 +2,7 @@ package com.github.alfonsoleandro.extraores.managers;
 
 import com.github.alfonsoleandro.extraores.ExtraOres;
 import com.github.alfonsoleandro.extraores.ores.ExtraOre;
-import com.github.alfonsoleandro.extraores.ores.defaultores.CompactDiamondOre;
-import com.github.alfonsoleandro.extraores.ores.defaultores.ExperienceOre;
-import com.github.alfonsoleandro.extraores.ores.defaultores.FakeCompactDiamondOre;
-import com.github.alfonsoleandro.extraores.ores.defaultores.HealthOre;
+import com.github.alfonsoleandro.extraores.ores.defaultores.*;
 import com.github.alfonsoleandro.mputils.itemstacks.MPItemStacks;
 import com.github.alfonsoleandro.mputils.reloadable.Reloadable;
 import org.bukkit.Material;
@@ -100,6 +97,39 @@ public class OresManager extends Reloadable {
                         oresFile.getStringList("ores.fake compact diamond ore.item.lore")
                 )
         ));
+        registerOre(new RandomMobOre(
+                oresFile.getString("ores.random mob ore.url"),
+                oresFile.getStringList("ores.random mob ore.enabled worlds"),
+                oresFile.getStringList("ores.random mob ore.replaces"),
+                oresFile.getInt("ores.random mob ore.max amount"),
+                oresFile.getDouble("ores.random mob ore.chunk probability"),
+                oresFile.getDouble("ores.random mob ore.probability"),
+                oresFile.getInt("ores.random mob ore.min y"),
+                oresFile.getInt("ores.random mob ore.max y"),
+                MPItemStacks.newItemStack(
+                        Material.PLAYER_HEAD,
+                        1,
+                        oresFile.getString("ores.random mob ore.item.name"),
+                        oresFile.getStringList("ores.random mob ore.item.lore")
+                ),
+                oresFile.getStringList("ores.random mob ore.mobs")
+        ));
+        registerOre(new ZombieOre(
+                oresFile.getString("ores.zombie ore.url"),
+                oresFile.getStringList("ores.zombie ore.enabled worlds"),
+                oresFile.getStringList("ores.zombie ore.replaces"),
+                oresFile.getInt("ores.zombie ore.max amount"),
+                oresFile.getDouble("ores.zombie ore.chunk probability"),
+                oresFile.getDouble("ores.zombie ore.probability"),
+                oresFile.getInt("ores.zombie ore.min y"),
+                oresFile.getInt("ores.zombie ore.max y"),
+                MPItemStacks.newItemStack(
+                        Material.PLAYER_HEAD,
+                        1,
+                        oresFile.getString("ores.zombie ore.item.name"),
+                        oresFile.getStringList("ores.zombie ore.item.lore")
+                )
+        ));
 
     }
 
@@ -107,8 +137,10 @@ public class OresManager extends Reloadable {
     public void unregisterDefaultOres(){
         unregisterOre("experience_ore");
         unregisterOre("heart_ore");
-        unregisterOre("heart_ore");
-
+        unregisterOre("compact_diamond_ore");
+        unregisterOre("fake_compact_diamond_ore");
+        unregisterOre("random_mob_ore");
+        unregisterOre("zombie_ore");
     }
 
     public void registerOre(ExtraOre ore){

@@ -113,3 +113,68 @@ ores:
         - '&7Looks just like a compact'
         - '&7diamond ore.'
         - '&7Explodes when mined'
+  # An ore that spawns a zombie when mined
+  zombie ore:
+    # In which worlds will this ore appear in the wilderness?
+    enabled worlds:
+      - world
+    # URL: https://minecraft-heads.com/custom-heads/decoration/23582-spawn-egg-zombie
+    url: f77e6e1ab179a3fa3cb487602af3f47643aedb1405caee71a138899951e14ea5
+    # How many chunks in 1000 chunks should contain this ore.
+    chunk probability: 1.0
+    # Percentage, out of 1000 for a block to be replaced by this ore.
+    probability: 1.0
+    # Lowest Y level in which this ore will spawn.
+    min y: 2
+    # Highest Y level in which this ore will spawn.
+    max y: 13
+    # The max amount of ores of this type that will be able to spawn in a chunk.
+    max amount: 2
+    # A list of block types this ore will replace.
+    replaces:
+      - 'ANDESITE'
+      - 'GRAVEL'
+    item:
+      name: '&bZombie ore'
+      lore:
+        - '&7Spawns a zombie'
+        - '&7when mined'
+  # An ore that spawns a random mob from a list when mined.
+  random mob ore:
+    # In which worlds will this ore appear in the wilderness?
+    enabled worlds:
+      - world
+    # URL: https://minecraft-heads.com/custom-heads/decoration/4092-easter-egg-rainbow
+    url: 7be7545297dfd6266bbaa2051825e8879cbfa42c7e7e24e50796f27ca6a18
+    # How many chunks in 1000 chunks should contain this ore.
+    chunk probability: 1.0
+    # Percentage, out of 1000 for a block to be replaced by this ore.
+    probability: 1.0
+    # Lowest Y level in which this ore will spawn.
+    min y: 2
+    # Highest Y level in which this ore will spawn.
+    max y: 13
+    # The max amount of ores of this type that will be able to spawn in a chunk.
+    max amount: 2
+    # A list of block types this ore will replace.
+    replaces:
+      - 'ANDESITE'
+      - 'GRAVEL'
+    # The list of possible mobs to spawn.
+    # A mob type is more likely to be chosen the more times it is repeated in this list.
+    mobs:
+      - CREEPER
+      - CREEPER
+      - CREEPER
+      - CREEPER
+      - CHICKEN
+      - CHICKEN
+      - COW
+      - DONKEY
+      - BLAZE
+      - SKELETON
+    item:
+      name: '&eRandom mob ore'
+      lore:
+        - '&7Spawns a random mob'
+        - '&7when mined'

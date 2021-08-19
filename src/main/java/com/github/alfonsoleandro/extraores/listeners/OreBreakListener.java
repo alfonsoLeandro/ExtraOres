@@ -10,12 +10,15 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
+import org.bukkit.scheduler.BukkitRunnable;
 
 public class OreBreakListener implements Listener {
 
+    private final ExtraOres plugin;
     private final MessageSender messageSender;
 
     public OreBreakListener(ExtraOres plugin){
+        this.plugin = plugin;
         this.messageSender = plugin.getMessageSender();
     }
 
@@ -32,7 +35,11 @@ public class OreBreakListener implements Listener {
             return;
         }
         if(!event.isSilkTouch()){
-            ore.onBreak(player, block.getLocation());
+            new BukkitRunnable() {
+                public void run() {
+                    ore.onBreak(player, block.getLocation());
+                }
+            }.runTask(plugin);
         }
     }
 
