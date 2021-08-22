@@ -1,7 +1,6 @@
 package com.github.alfonsoleandro.extraores.ores.defaultores;
 
 import com.github.alfonsoleandro.extraores.ores.ExtraOre;
-import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.Particle;
 import org.bukkit.attribute.Attribute;
@@ -28,8 +27,6 @@ public class HealthOre extends ExtraOre {
         double maxHealth = Objects.requireNonNull(player.getAttribute(Attribute.GENERIC_MAX_HEALTH)).getBaseValue();
         player.setHealth(Math.min(maxHealth, player.getHealth()+health));
         Objects.requireNonNull(player.getLocation().getWorld()).spawnParticle(Particle.HEART, player.getLocation(), 4);
-        //todo remove debug
-        Bukkit.broadcastMessage("Health ORE BROKEN");
     }
 
 }

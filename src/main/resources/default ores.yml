@@ -1,5 +1,4 @@
 ores:
-  #TODO ores??
   # An ore that drops experience when mined.
   experience ore:
     # In which worlds will this ore appear in the wilderness?

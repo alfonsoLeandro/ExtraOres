@@ -9,6 +9,7 @@ import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 
 import java.util.Collection;
+import java.util.Objects;
 
 public class ExperienceOre extends ExtraOre {
 
@@ -24,10 +25,9 @@ public class ExperienceOre extends ExtraOre {
 
     @Override
     public void onBreak(Player player, Location location) {
-        ExperienceOrb orb = (ExperienceOrb) location.getWorld().spawnEntity(location, EntityType.EXPERIENCE_ORB);
+        ExperienceOrb orb = (ExperienceOrb) Objects.requireNonNull(location.getWorld())
+                .spawnEntity(location, EntityType.EXPERIENCE_ORB);
         orb.setExperience(experience);
-        //todo remove debug
-        Bukkit.broadcastMessage("EXPERIENCE ORE BROKEN");
     }
 
 }

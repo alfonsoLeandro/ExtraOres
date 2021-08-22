@@ -2,3 +2,9 @@ config:
   prefix: '&f[&eMPExtraOres&f]'
   debug: true
   max ores per chunk: 20
+  # The mode used to populate each chunk.
+  # -Mode 1: Loop through every ore
+  # -Mode 2: Select a few ores (configurable amount)
+  chunk populate mode: 1
+  # The amount of ores to select from the registered ores list (only if chunk populate mode is set to 2).
+  mode 2 ores: 10

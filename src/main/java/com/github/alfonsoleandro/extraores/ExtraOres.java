@@ -17,7 +17,9 @@ import org.bukkit.command.PluginCommand;
 import org.bukkit.plugin.PluginManager;
 
 public final class ExtraOres extends ReloaderPlugin {
-
+    /**
+     * This plugin's unique instance.
+     */
     private static ExtraOres instance;
 
     private final String version = getDescription().getVersion();
@@ -49,7 +51,7 @@ public final class ExtraOres extends ReloaderPlugin {
         registerEvents();
         registerCommands();
         for(World world : Bukkit.getWorlds()){
-            world.getPopulators().add(orePopulator);
+            world.getPopulators().add(this.orePopulator);
         }
     }
 
@@ -63,7 +65,7 @@ public final class ExtraOres extends ReloaderPlugin {
         this.messageSender.send("&fJoin my discord server at &chttps://discordapp.com/invite/ZznhQud");
         this.messageSender.send("Please consider subscribing to my yt channel: &c" + getDescription().getWebsite());
         for(World world : Bukkit.getWorlds()){
-            world.getPopulators().remove(orePopulator);
+            world.getPopulators().remove(this.orePopulator);
         }
     }
 
